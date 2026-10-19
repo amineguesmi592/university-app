@@ -1,35 +1,68 @@
-import './App.css'
-import Image from './assets/img.jpg'
-const etudiant = {
+import './App.css';
+import Header from './components/Header.jsx';
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
+import StudentCard from './components/StudentCard.jsx';
+import img from './assets/img.jpg';
+const etudiants = [
+  {
   nom:"Amine",
   prenom:"Guesmi",
   Email:"amineguesmi26@gmail.com",
   telephone:26497162,
   filiere:"genie logiciel et system d information",
-  Annee:2026,
+  Annee:"2éme annee",
   Groupe:"GLSI2",
   ville:"Mahdia",
-  image : Image
-}
+  image : img,
+  },
+
+  {
+  nom:"Sarre",
+  prenom:"Trabelsi",
+  Email:"sarratrabelsi@gmail.com",
+  telephone:25469876,
+  filiere:"genie logiciel et system d information",
+  Annee:"2éme annee",
+  Groupe:"GLSI2",
+  ville:"Mahdia",
+  image : img,
+  },
+
+  {
+  nom:"Ahmed",
+  prenom:"Ben Salah",
+  Email:"ahmedbenschalah@gmail.com",
+  telephone:25469876,
+  filiere:"genie logiciel et system d information",
+  Annee:"2éme annee",
+  Groupe:"GLSI2",
+  ville:"Mahdia",
+  image : img,
+  }
+];
+
 function App() {
   return (
-    <>
-    <div>
-      <h1>Fichier etudiant</h1>
-      <img src={etudiant.image} alt="IMAGE ETUD"  heigh="25%" width="25%"/>
-      <p>Nom et Prenom : {etudiant.nom} {etudiant.prenom} </p>
-      <p>Email: {etudiant.Email}</p>
-      <p>Telephone : {etudiant.telephone}</p>
-      <p>Filiere : {etudiant.filiere}</p>
-      <p>Annee d'Etude : {etudiant.Annee}</p>
-      <p>Groupe : {etudiant.Groupe}</p>
-      <p>Ville : {etudiant.ville}</p>
-
+    <div className="container">
+      <Header />
+      <Navbar />
+      {etudiants.map((etudiant) => (
+      <StudentCard
+        nom={etudiant.nom}
+        prenom={etudiant.prenom}
+        Email={etudiant.Email}
+        telephone={etudiant.telephone}
+        filiere={etudiant.filiere}
+        Annee={etudiant.Annee}
+        Groupe={etudiant.Groupe}
+        ville={etudiant.ville}
+        image={etudiant.image}
+        />
+      ))}
+      <Footer />
+    </div>
       
-      <button type="submit">conntacter</button>
-    </div>  
-    </>
-  )
+  );
 }
-
-export default App
+export default App;
