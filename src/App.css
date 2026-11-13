@@ -12,4 +12,21 @@ button{
 color: black;
 
 }
+/* App Container lel kol */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8fafc;
+    min-height: 100vh;
+}
 
+/* Liste mte3 les cards bech yjiw mreglin w yti7ou fel sser */
+.student-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
