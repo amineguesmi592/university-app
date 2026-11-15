@@ -111,7 +111,9 @@ function App() {
     <div className="container">
       <Header />
       <Navbar />
-<StudentForm />
+      <StudentForm 
+          onAjouterEtudiant={ajouterEtudiant}
+      />
       {etudiants.map((etudiant,id) => (
         <StudentCard
           key={id}
