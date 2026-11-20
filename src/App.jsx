@@ -7,6 +7,7 @@ import img from './assets/img.jpg';
 import { useState } from 'react';
 import StudentForm from './components/StudentForm.jsx';
 function App() {
+    const  [etudiant, setEtudiant] = useState(null);
 
     const  [etudiants,setEtudiants] = useState([
     {
@@ -63,7 +64,7 @@ function App() {
         image={etudiant.image}
         />
       ))}
-      
+  
   function ajouterEtudiant() {
     const nouvelEtudiant = {
       id:4,
@@ -84,39 +85,34 @@ function App() {
     setEtudiants(anciensEtudiants => anciensEtudiants.filter(etudiant => etudiant.id !== id)
     );
   }
-  function modifierEtudiant(id) {
-    const nouveauprenom = prompt("entrez le nouveau prenom:");
-    if(
-      nouveauprenom !== null &&
-      nouveauprenom.trim() !==""
-
-    )
-    {
-    setEtudiants((anciensEtudiants) => 
-      anciensEtudiants.map(
-        (etudiant)=>
-          etudiant.id === id
-           ? {...etudiant,
-              prenom:nouveauprenom.trim(),
-            }
-            :etudiant,
-      ),
-    );
+  const [etudiantAModifier, setetudiantAModifier] = useState(null);
+  function modifierEtudiant(etudiant) {
+    setetudiantAModifier(etudiant);
   }
-
-  }
-
+  function enregistrerModification(etudiant) {
+      setEtudiants((anciensEtudiants) =>
+        anciensEtudiants.map((etudiant) =>
+          etudiant.id === etudiantAModifier.id
+             ?{...etudiant , id: etudiant.id }
+              :etudiant,
+        ),
+      );
+  } 
 
   return (
     <div className="container">
       <Header />
       <Navbar />
       <StudentForm 
+          key={etudiantAModifier ? etudiantAModifier.id : "nouveau"}
           onAjouterEtudiant={ajouterEtudiant}
+          etudiantAModifier={etudiantAModifier}
+          onModifieretudiant={enregistrerModification}  
       />
       {etudiants.map((etudiant,id) => (
         <StudentCard
           key={id}
+          etudiant={etudiant}
           id={etudiant.id}
           nom={etudiant.nom}
           prenom={etudiant.prenom}
@@ -128,7 +124,7 @@ function App() {
           ville={etudiant.ville}
           image={etudiant.image}
           supprimerEtudiant={supprimerEtudiant}
-          onmodifier={modifierEtudiant}
+          modifierEtudiant ={modifierEtudiant}
         />
       ))}
 

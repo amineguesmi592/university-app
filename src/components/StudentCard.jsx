@@ -2,6 +2,7 @@ import './StudentCard.css';
 import img from '../assets/img.jpg';
 
 function StudentCard({
+  etudiant,
   id,
   nom,
   prenom,
@@ -13,7 +14,7 @@ function StudentCard({
   ville,
   image,
   supprimerEtudiant,
-  onmodifier,
+  modifierEtudiant,
 }) {
   return (
     <div className="container">
@@ -32,7 +33,7 @@ function StudentCard({
         <button onClick={() => supprimerEtudiant(id)}>
           Supprimer un étudiant
         </button>
-        <button onClick={() => onmodifier(id)}>Modifier</button>
+        <button onClick={() => modifierEtudiant(etudiant)}>Modifier</button>
       </div>
     </div>
   );
